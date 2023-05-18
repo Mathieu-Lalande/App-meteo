@@ -29,35 +29,33 @@ export const getDate = function (dateUnix, timezone) {
 /**
  * @param {number} timeUnix Unix time in seconds
  * @param {number} timezone timezone from UTC in seconds
- * @returns {string} time in format "HH:MM AM/PM"
+ * @returns {string} time in format "HH:MM"
  */
 
 export const getTime = function (timeUnix, timezone) {
     const date = new Date((timeUnix + timezone) * 1000);
-    const hours = date.getUTCHours();
+    const hours = (date.getUTCHours() + 2) % 24; // Ajouter 2 heures pour convertir en heure française
     const minutes = date.getUTCMinutes();
-    const period = hours >= 12 ? 'PM' : 'AM';
 
-    return `${hours % 12 || 12}:${minutes} ${period}`;
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
 }
 
 
 /**
  * @param {number} timeUnix Unix time in seconds
  * @param {number} timezone timezone from UTC in seconds
- * @returns {string} time in format "HH AM/PM"
+ * @returns {string} time in format "HH"
  */
 
 export const getHours = function (timeUnix, timezone) {
     const date = new Date((timeUnix + timezone) * 1000);
-    const hours = date.getUTCHours();
-    const period = hours >= 12 ? 'PM' : 'AM';
+    const hours = (date.getUTCHours() + 2) % 24; // Ajouter 2 heures pour convertir en heure française
 
-    return `${hours % 12 || 12} ${period}`;
+    return hours.toString().padStart(2, '0');
 }
 
 /**
- * @param {number} mps Metter per second
+ * @param {number} mps Meter per second
  * @returns {number} km/h
  */
 

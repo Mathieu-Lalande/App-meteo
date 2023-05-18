@@ -199,7 +199,7 @@ export const updateWeather = function (lat, lon) {
                 <h2 class="title-2" id="highlights-label">Temps fort d'aujourd'hui</h2>
                 <div class="highlight-list">
                     <div class="card card-sm highlight-card one">
-                        <h3 class="title-3">Qualité de l'air</h3>
+                        <h3 class="title-3">Qualité de l'air (IQA)</h3>
                         <div class="wrapper">
                             <span class="m-icon">air</span>
                             <ul class="card-list">
@@ -274,7 +274,7 @@ export const updateWeather = function (lat, lon) {
                         <div class="wrapper">
                             <span class="m-icon">airwave</span>
 
-                            <p class="title-1">${pressure}<sub>hPa</sub></p>
+                            <p class="title-1">${pressure}<sub>mbar</sub></p>
                         </div>
 
                     </div>
@@ -351,7 +351,7 @@ export const updateWeather = function (lat, lon) {
                 tempLi.innerHTML = `
                     <div class="card card-sm slider-card">
 
-                        <p class="body-3">${module.getHours(dateTimeUnix, timezone)}</p>
+                        <p class="body-3">${module.getHours(dateTimeUnix, timezone)}h</p>
                         
                         <img src="./assets/images/weather_icons/${icon}.png" width="48" height="48" loading="lazy" alt=${description} class="weather-icon" title="${description}">
 
@@ -368,7 +368,7 @@ export const updateWeather = function (lat, lon) {
                 windLi.innerHTML = `
                     <div class="card card-sm slider-card">
                     
-                        <p class="body-3">${module.getHours(dateTimeUnix, timezone)}</p>
+                        <p class="body-3">${module.getHours(dateTimeUnix, timezone)}h</p>
 
                         <img src="./assets/images/weather_icons/direction.png" width="48" height="48" loading="lazy" alt="direction" class="weather-icon" style="transform: rotate(${windDirection - 180}deg)">
 
